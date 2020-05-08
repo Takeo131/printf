@@ -6,90 +6,13 @@
 /*   By: Takeo <Takeo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 19:47:08 by Takeo             #+#    #+#             */
-/*   Updated: 2020/05/08 13:40:13 by Takeo            ###   ########.fr       */
+/*   Updated: 2020/05/08 17:20:04 by Takeo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
+#include "include/ft_printf.h"
 
-char				check_type(char *type)
-{
-	int		a;
-	char	c;
-
-	a = 0;
-	while (type[a] != '%')
-		a++;
-	c = type[a + 1];
-	return (c);
-}
-
-void				ft_putstr(char *s)
-{
-	int a;
-
-	a = 0;
-	if (s != NULL)
-	{
-		while (s[a])
-		{
-			ft_putchar(s[a]);
-			a++;
-		}
-	}
-}
-
-char				build_tab(char **tab, char *str)
-{
-	int		a;
-	int		b;
-	int		c;
-	char	d;
-
-	a = 0;
-	b = 0;
-	while (str[a])
-	{
-		c = 0;
-		if (str[a++] == '%')
-		{
-			d = str[a];
-			tab[b++][c] = str[a++];
-		}
-		while (str[a] && str[a] != '%')
-			tab[b][c++] = str[a++];
-		b++;
-	}
-	return (d);
-}
-
-int					ft_putchar(char c)
-{
-	write(1, &c, 1);
-	return (1);
-}
-
-char				*ft_strdup(const char *s1)
-{
-	char	*res;
-	int		a;
-	int		size;
-
-	a = 0;
-	size = ft_strlen(s1);
-	if (!(res = malloc(sizeof(char) * size + 1)))
-		return (NULL);
-	while (s1[a])
-	{
-		res[a] = s1[a];
-		a++;
-	}
-	res[a] = '\0';
-	return (res);
-}
-
-static t_flags		ft_flag(void)
+static t_flags		ft_flags(void)
 {
 	t_flags	flags;
 
@@ -102,46 +25,74 @@ static t_flags		ft_flag(void)
 	return (flags);
 }
 
+static int			ft_parse(const char *str, int i,
+t_flags *flags, va_list args)
+{
+	while (str[i])
+	{
+		if (!ft_isconversion(str[i]) && !ft_isflag(str[i])
+		&& !ft_isdigit(str[i]))
+			break ;
+		if (str[i] == '0' && flags->width == 0 && flags->minus == 0)
+			flags->zero = 1;
+		if (str[i] == '*')
+			*flags = ft_width_flag(args, *flags);
+		if (str[i] == '.')
+			i = ft_dot_flag(str, i, flags, args);
+		if (str[i] == '-')
+			*flags = ft_minus_flag(*flags);
+		if (ft_isdigit(str[i]))
+			*flags = ft_digit_flag(str[i], *flags);
+		if (ft_isconversion(str[i]))
+		{
+			flags->type = str[i];
+			break ;
+		}
+		i++;
+	}
+	return (i);
+}
+
 static int			ft_input(const char *str, va_list args)
 {
 	int		i;
-	int		count;
-	t_flags	flags;
+	int		c;
+	t_flags flags;
 
 	i = 0;
-	count = 0;
+	c = 0;
 	while (!0)
 	{
-		flags = ft_flag();
+		flags = ft_flags();
 		if (!str[i])
 			break ;
 		else if (str[i] != '%')
-			count += ft_putchar(str[i]);
+			c += ft_putchar(str[i]);
 		else if (str[i] == '%' && str[i + 1])
 		{
 			i = ft_parse(str, ++i, &flags, args);
 			if (ft_isconversion(str[i]))
-				count += ft_handle((char)flags.type, flags, args);
+				c += ft_handle((char)flags.type, flags, args);
 			else if (str[i])
-				count += ft_putchar(str[i]);
+				c += ft_putchar(str[i]);
 		}
 		i++;
 	}
-	return (count);
+	return (c);
 }
 
 int					ft_printf(const char *type, ...)
 {
 	va_list		args;
 	const char	*str;
-	int			count;
+	int			c;
 
-	count = 0;
+	c = 0;
 	if (!(str = ft_strdup(type)))
 		return (0);
 	va_start(args, type);
-	count += ft_input(str, args);
+	c += ft_input(str, args);
 	va_end(args);
 	free((char*)str);
-	return (count);
+	return (c);
 }

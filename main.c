@@ -6,7 +6,7 @@
 /*   By: Takeo <Takeo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 19:35:39 by Takeo             #+#    #+#             */
-/*   Updated: 2020/05/08 10:40:26 by Takeo            ###   ########.fr       */
+/*   Updated: 2020/05/08 17:31:08 by Takeo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int		ft_printf(const char *type, ...);
 
-int		main(int ac, char **av)
+int		main(void)
 {
 	printf("   printf c = %c\n", 'c');
 	ft_printf("ft_printf c = %c\n", 'c');
