@@ -6,7 +6,7 @@
 /*   By: anprenat <anprenat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/10 18:59:59 by anprenat          #+#    #+#             */
-/*   Updated: 2020/05/10 19:00:02 by anprenat         ###   ########.fr       */
+/*   Updated: 2020/05/11 17:54:52 by anprenat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static int			ft_input(const char *str, va_list args)
 
 	i = 0;
 	c = 0;
-	while (!0)
+	while (args)
 	{
 		flags = ft_flags();
 		if (!str[i])

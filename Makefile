@@ -6,11 +6,11 @@
 #    By: anprenat <anprenat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/10 19:00:16 by anprenat          #+#    #+#              #
-#    Updated: 2020/05/11 16:16:30 by anprenat         ###   ########.fr        #
+#    Updated: 2020/05/11 17:54:17 by anprenat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = printf.a
+NAME = libftprintf.a
 
 SRCS = 	ft_printf.c \
 		srcs/ft_handle_char.c \
