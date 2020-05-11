@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Takeo <Takeo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: anprenat <anprenat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/04 19:35:39 by Takeo             #+#    #+#             */
-/*   Updated: 2020/05/09 17:12:37 by Takeo            ###   ########.fr       */
+/*   Created: 2020/03/04 19:35:39 by anprenat          #+#    #+#             */
+/*   Updated: 2020/05/11 16:03:58 by anprenat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,22 @@ int		part2(int c)
 	return (c);
 }
 
-int		main(void)
+int		main(int ac, char **av)
 {
-	int c;
+	int		c;
+	char	*str;
 
 	c = 1;
-	part1(c);
-	part2(c);
+	str = av[ac - 1];
+	if (ac == 1)
+	{
+		part1(c);
+		part2(c);
+	}
+	else
+	{
+		printf("%d\n", printf("   printf = %.*f\n", 3, 3.14159265));
+		printf("%d\n", ft_printf("ft_printf = %.*f\n", 3, 3.14159265));
+	}
 	return (c);
 }

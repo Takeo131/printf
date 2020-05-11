@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: Takeo <Takeo@student.42.fr>                +#+  +:+       +#+         #
+#    By: anprenat <anprenat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/05/08 16:57:38 by Takeo             #+#    #+#              #
-#    Updated: 2020/05/08 17:29:57 by Takeo            ###   ########.fr        #
+#    Created: 2020/05/10 19:00:16 by anprenat          #+#    #+#              #
+#    Updated: 2020/05/11 16:16:30 by anprenat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
+NAME = printf.a
 
 SRCS = 	ft_printf.c \
 		srcs/ft_handle_char.c \
