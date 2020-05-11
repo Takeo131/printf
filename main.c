@@ -6,7 +6,7 @@
 /*   By: anprenat <anprenat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 19:35:39 by anprenat          #+#    #+#             */
-/*   Updated: 2020/05/11 16:03:58 by anprenat         ###   ########.fr       */
+/*   Updated: 2020/05/11 16:40:51 by anprenat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ int		main(int ac, char **av)
 	}
 	else
 	{
-		printf("%d\n", printf("   printf = %.*f\n", 3, 3.14159265));
-		printf("%d\n", ft_printf("ft_printf = %.*f\n", 3, 3.14159265));
+		printf("%d\n", printf("   printf = %.*d\n", 5, 314));
+		printf("%d\n", ft_printf("ft_printf = %.*d\n", 5, 314));
 	}
 	return (c);
 }
