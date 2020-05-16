@@ -6,7 +6,7 @@
 /*   By: anprenat <anprenat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/11 16:14:19 by anprenat          #+#    #+#             */
-/*   Updated: 2020/05/11 16:14:21 by anprenat         ###   ########.fr       */
+/*   Updated: 2020/05/16 19:44:57 by anprenat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int			ft_handle_string(char *str, t_flags flags)
 	if (flags.dot >= 0)
 		count += ft_handle_width(flags.width, flags.dot, 0);
 	else
-		count += ft_handle_width(flags.width, ft_strlen(str), 0);
+		count += ft_handle_width(flags.width, ft_strlen(str), flags.zero);
 	if (flags.minus == 0)
 		count += ft_input(str, flags);
 	return (count);
