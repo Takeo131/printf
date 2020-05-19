@@ -6,7 +6,7 @@
 #    By: anprenat <anprenat@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/10 19:00:16 by anprenat          #+#    #+#              #
-#    Updated: 2020/05/11 17:54:17 by anprenat         ###   ########.fr        #
+#    Updated: 2020/05/18 19:20:03 by anprenat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,7 @@ all: $(NAME)
 $(NAME): $(OBJECTS)
 
 $(OBJECTS): $(SRCS) $(INCLUDES)
-	@gcc -Wextra -Werror -Wall -c $(SRCS)
+	@gcc -Wall -Wextra -Werror -c $(SRCS)
 	@ar rcs $(NAME) $(OBJECTS)
 
 clean:
@@ -74,4 +74,3 @@ fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all
-bonus:
